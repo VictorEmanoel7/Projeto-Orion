@@ -1,5 +1,5 @@
 import { FaUser, FaLock } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 import "./Login.css";
@@ -8,10 +8,18 @@ const Login = () => {
 
     const [nome, setNome] = useState("");
     const [senha, setSenha] = useState("");
+    const navigate = useNavigate();
 
     const enviarFormulario = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); //Evita o envio do formulário e recarregamento da página
         console.log("envio");
+        if (nome && senha) {
+          // Redireciona para a tela inicial
+          navigate("/inicial");
+        } else {
+          alert("Por favor, preencha todos os campos!");
+        }
+    
     }
 
   return (
